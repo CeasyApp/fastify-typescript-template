@@ -18,12 +18,14 @@
   "license": "ISC",
   "dependencies": {
     "close-with-grace": "^1.1.0",
+    "config": "^3.3.7",
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.10.0",
     "fastify-cli": "^2.15.0",
     "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
+    "@types/config": "^0.0.41",
     "@types/node": "^17.0.21",
     "@types/tap": "^15.0.6",
     "tap": "^15.1.6",

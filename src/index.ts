@@ -1,35 +1,22 @@
-import Fastify from 'fastify'
-import closeWithGrace, {Signals} from 'close-with-grace'
-import app from './app'
+import Fastify from "fastify";
+import app from "./app";
+import config from "./config";
+const fastify = Fastify();
 
-const fastify = Fastify()
+// attach config
+config(fastify);
 
-type CallbackOptions = {
-  manual?: boolean
-  err?: Error
-  signal?: Signals
-}
+// register plugins & routes
+fastify.register(app);
 
-const closeFastify = async (cbOpts: CallbackOptions) => {
-  if (cbOpts.err) {
-    fastify.log.error(cbOpts.err)
+fastify.listen(
+  fastify.config.get("port"),
+  fastify.config.get("host"),
+  (err, address) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    console.log(`Server listening at ${address}`);
   }
-  await fastify.close()
-}
-
-const closeListeners = closeWithGrace({ delay: 500 }, closeFastify)
-
-fastify.addHook('onClose', async (instance, done) => {
-  closeListeners.uninstall()
-  done()
-})
-
-fastify.register(app)
-
-fastify.listen(3000, (err, address) => {
-  if (err) {
-    console.error(err)
-    process.exit(1)
-  }
-  console.log(`Server listening at ${address}`)
-})
+);
