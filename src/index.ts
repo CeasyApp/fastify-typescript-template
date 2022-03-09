@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import app from "./app";
 import config from "./config";
+import closeGraceful from "./closeGraceful";
 const fastify = Fastify();
 
 // attach config
@@ -8,6 +9,8 @@ config(fastify);
 
 // register plugins & routes
 fastify.register(app);
+
+fastify.register(closeGraceful);
 
 fastify.listen(
   fastify.config.get("port"),
