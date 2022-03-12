@@ -1,5 +1,5 @@
 import { DefaultConfig } from "./config.d";
-import config, { IConfig } from "config";
+import config from "config";
 import { FastifyInstance } from "fastify";
 
 declare module "fastify" {
