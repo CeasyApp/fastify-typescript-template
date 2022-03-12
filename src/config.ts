@@ -1,10 +1,12 @@
+import { DefaultConfig } from "./config.d";
 import config, { IConfig } from "config";
 import { FastifyInstance } from "fastify";
 
 declare module "fastify" {
   interface FastifyInstance {
-    config: IConfig;
+    config: DefaultConfig;
   }
 }
 
-export default (fastify: FastifyInstance) => (fastify.config = config);
+export default (fastify: FastifyInstance) =>
+  (fastify.config = JSON.parse(JSON.stringify(config)));

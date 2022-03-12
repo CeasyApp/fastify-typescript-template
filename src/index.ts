@@ -1,7 +1,9 @@
+import { ServerConfig } from "./config.d";
 import Fastify from "fastify";
 import app from "./app";
 import config from "./config";
 import closeGraceful from "./closeGraceful";
+
 const fastify = Fastify();
 
 // attach config
@@ -12,14 +14,14 @@ fastify.register(app);
 
 fastify.register(closeGraceful);
 
-fastify.listen(
-  fastify.config.get("port"),
-  fastify.config.get("host"),
-  (err, address) => {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-    console.log(`Server listening at ${address}`);
+const {
+  serverConfig: { listenAddress, port },
+} = fastify.config;
+
+fastify.listen(port, listenAddress, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
   }
-);
+  console.log(`Server listening at ${address}`);
+});
