@@ -1,9 +1,12 @@
 "use strict";
-import { FastifyInstance, FastifyPluginOptions} from "fastify";
-import path from "path"
-import AutoLoad from "fastify-autoload"
+import { FastifyInstance, FastifyPluginOptions } from "fastify";
+import path from "path";
+import AutoLoad from "fastify-autoload";
 
-export default async function (fastify: FastifyInstance, opts: FastifyPluginOptions) {
+export default async function (
+  fastify: FastifyInstance,
+  opts: FastifyPluginOptions
+) {
   // Place here your custom code!
 
   // Do not touch the following lines
@@ -22,4 +25,4 @@ export default async function (fastify: FastifyInstance, opts: FastifyPluginOpti
     dir: path.join(__dirname, "routes"),
     options: Object.assign({}, opts),
   });
-};
+}

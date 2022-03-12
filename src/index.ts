@@ -1,4 +1,3 @@
-import { ServerConfig } from "./config.d";
 import Fastify from "fastify";
 import app from "./app";
 import config from "./config";
