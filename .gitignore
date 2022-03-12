@@ -1,3 +1,7 @@
+#Config
+config/development.ts
+config/production.ts
+
 # Logs
 logs
 *.log
