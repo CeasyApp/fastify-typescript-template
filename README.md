@@ -23,7 +23,7 @@ Run the test cases.
 
 To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
 
-## Overwriting with config/development.ts or config/production.ts
+## Overwriting Config with config/development.ts or config/production.ts
 
 Here is an example how to overwrite settings in development or production from the `default.ts` configuration.
 
