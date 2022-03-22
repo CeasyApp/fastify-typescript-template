@@ -9,7 +9,7 @@ const serverConfig: ServerConfig = {
 
 const cookieConfig: CookieConfig = {
   secret:
-    "OVERWRITE IT in development.json or production.json AND DO NEVER COMMIT CREDENTIALS TO GIT!",
+    "CookieSecret, OVERWRITE IT in development.json or production.json AND DO NEVER COMMIT CREDENTIALS TO GIT!",
   parseOptions: {
     signed: true, // when disabled, everything works fine
   },
@@ -17,7 +17,7 @@ const cookieConfig: CookieConfig = {
 
 const sessionConfig: SessionConfig = {
   secret:
-    "Needs to be the same than Cookie Secret. OVERWRITE IT in development.json or production.json AND DO NEVER COMMIT CREDENTIALS TO GIT!",
+    "SessionSecret, OVERWRITE IT in development.json or production.json AND DO NEVER COMMIT CREDENTIALS TO GIT!",
   // unsignSignedCookie: true,
   cookie: { secure: "auto" },
 };
