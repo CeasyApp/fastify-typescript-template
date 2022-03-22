@@ -5,7 +5,8 @@ export default async function (
   opts: FastifyPluginOptions
 ) {
   fastify.get("/", async function (request, reply) {
-    return { root: true };
+    const sessionId = request.session.sessionId
+    return { root: true, sessionId };
   });
 
   fastify.get("/ping", opts, async (request, reply) => {
